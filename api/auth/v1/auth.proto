@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "api/auth/v1;auth";
+
+
+import "google/api/annotations.proto";
+
+service AuthService {
+  rpc Register(SignUpRequest) returns (SignUpResponse) {
+    option (google.api.http) = {
+      post: "/v1/register"
+      body: "*"
+    };
+  }
+
+  rpc Login(SignInRequest) returns (SignInResponse) {
+    option (google.api.http) = {
+      post: "/v1/login"
+      body: "*"
+    };
+  }
+
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {
+    option (google.api.http) = {
+      post: "/v1/token/validate"
+      body: "*"
+    };
+  }
+//  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {
+//    option (google.api.http) = {
+//      post: "/v1/token/refresh"
+//      body: "*"
+//    };
+//  }
+}
+
+message SignUpRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message SignUpResponse {
+  string message = 1;
+}
+
+message SignInRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message SignInResponse {
+  string accessToken = 1;
+//  string refreshToken = 2;
+}
+
+message ValidateTokenRequest {
+  string accessToken = 1;
+}
+
+message ValidateTokenResponse {
+  bool isValid = 1;
+}
+//
+//message RefreshTokenRequest {
+//  string refreshToken = 1;
+//}
+//
+//message RefreshTokenResponse {
+//  string accessToken = 1;
+//}
