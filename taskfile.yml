@@ -6,6 +6,18 @@ vars:
   DB_STRING: "postgres://test:test@localhost:5433/test?sslmode=disable"
 
 tasks:
+
+  container-build:
+    cmds:
+      - |
+        docker build \
+          --build-arg GO_SVC_PATHS=. \
+          --build-arg SERVICE_NAME=auth_service \
+          --build-arg VERSION=1.0.0 \
+          -t auth_service:1.0.0 .
+
+
+
   generate-proto:
     desc: Генерация Go-кода из .proto файлов
     cmds:
