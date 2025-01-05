@@ -10,7 +10,6 @@ import (
 func GetConfigFromEnv() (*Config, error) {
 	if err := godotenv.Load(); err != nil {
 		log.Printf("Не удалось загрузить .env файл: %s\n", err.Error())
-		return nil, err
 	}
 
 	// Инициализация структуры конфигурации

@@ -12,7 +12,7 @@ func main() {
 	// Загрузка конфигурации
 	cfg, err := config.GetConfigFromEnv()
 	if err != nil {
-		log.Fatalf("Failed to load configuration: %s\n", err.Error())
+		log.Printf("Failed to load configuration: %s\n", err.Error())
 	}
 
 	// Инициализация логгера
