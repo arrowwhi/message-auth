@@ -9,7 +9,7 @@ import (
 // GetConfigFromEnv загружает конфигурации из .env файла и переменных окружения
 func GetConfigFromEnv() (*Config, error) {
 	if err := godotenv.Load(); err != nil {
-		log.Printf("Не удалось загрузить .env файл: %s\n", err.Error())
+		log.Fatalf("Не удалось загрузить .env файл: %s\n", err.Error())
 	}
 
 	// Инициализация структуры конфигурации
